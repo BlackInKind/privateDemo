@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+      text-decoration: none;
+      font-style: normal;
+      color: rgb(35, 35, 36);
+      font: inherit;
+      vertical-align: baseline;
+    }
+    body{
+      background-color: rgb(192, 192, 192);
+    }
+    .fl {
+      float: left;
+    }
+    
+    .swip {
+      /* height必须固定死 */
+      height: 200px;
+      margin:40px 0px 10px;
+      background-color: rgb(189, 186, 186);
+    }
+    .swipe-style {
+      /* 轮播图设置 */
+      height:200px;
+      width:100%;
+    }
+    .con-point {
+      margin: 10px 0px;
+      padding: 5px 0px 5px 5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background-color: aliceblue;
+    }
+    .con-point > div {
+      height: 100px;
+      width: 24%;
+      /* border:dashed 1px black; */
+    }
+    .con-point img {
+      display: block;
+      width: 80px;
+      height: 60%;
+      margin:5px auto;
+      background-color: rgb(57, 120, 175);
+    }
+    .con-point em {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+    .red {
+      background-color: red;
+    }
+    .blue {
+      background-color: blue;
+    }
+    .green {
+      background-color:green;
+    }
+  </style>
+  <style>
+    .con-recommended {
+      padding: 10px 0px 10px 10px;
+      background-color: aliceblue;
+
+    }
+    .con-recommended div h2 {
+      font-weight: 700;
+      padding:5px 0px 5px 10px;
+      border-bottom: solid 1px black;
+    }
+    .n-main-recommended {
+      position: relative;
+      width: 100%;
+      padding: 10px 0px;
+      border-bottom: solid 1px black;
+    }
+    .l-content, .r-content {display: inline-block;}
+    .l-content { width: 30%;}
+    .l-content img {
+      display: block;
+      height: 100px;
+      width:100%;
+      background-color: black;
+    }
+    .r-content {
+      position: absolute;
+      height: 100px;
+      width: 60%;
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: solid 1px black;
+    }
+    .r-content h3 {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .r-content p {
+      display: inline-block;
+      height: 45px;
+      width: 80%;
+      font-size: 0.8em;
+      text-indent: 1.6em;
+      overflow: hidden;
+      background-color: pink;
+    }
+    .r-content span {
+      margin-right: 20px;
+      font-size: 0.8em;
+      position: absolute;
+      bottom: 0px;
+      right:0px;
+      background-color: pink;
+    }
+
+  </style>
+  <style>
+  /* 新闻列表专用 */
+  .news-point {
+    height: 30px;
+    padding-top: 15px;
+    background-color: aliceblue;
+    border-bottom: solid 1px black;
+  }
+  .news-point > div {
+    float: left;
+    font-weight: 700;
+    padding: 0px 5px;
+    border-left: solid 1px black;
+  }
+  .news-point div:first-child{
+    border-Left: solid 0px;
+  }
+  .news-recommended {
+    background-color: aliceblue;
+  }
+  .news-recommended h2 {
+    padding: 5px 0px;
+    border-bottom: solid 1px black;
+  }
+  .n-main-recommended {
+    padding: 5px 0px 5px 5px;
+    position: relative;
+  }
+  .news-recommended img {
+    background-color: pink;
+  }
+  .n-main-recommended .r-content {
+    position: absolute;
+    top: 5px;
+    border-left: 0px;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <mt-header fixed title=" 新闻首页">
+      <!-- 控制返回 -->
+      <!-- <router-link to="/" ></router-link> -->
+        <mt-button icon="back" slot="left">返回</mt-button>
+      <!-- 控制更多more -->
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
+    <!-- 轮播图 -->
+    <mt-swipe class="swip" :show-indicators="false" :auto="4000">
+      <mt-swipe-item><div class="red swipe-style" ></div></mt-swipe-item>
+      <mt-swipe-item><div class="blue swipe-style" ></div></mt-swipe-item>
+      <mt-swipe-item><div class="green swipe-style" ></div></mt-swipe-item>
+    </mt-swipe>
+    
+    <!-- 九宫格 -->
+    <div class="news-point">
+      <div class><a href="javascript:;"><em>主页0</em></a></div>
+      <div class><a href="javascript:;"><em>主页1</em></a></div>
+      <div class><a href="javascript:;"><em>主页1</em></a></div>
+      <div class><a href="javascript:;"><em>主页1</em></a></div>
+    </div>
+    <!-- 推荐 懒加载-->
+    <div class="news-recommended">
+      <!-- 推荐列表 -->
+      <ul>
+        <li>
+          <div class="n-main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是新闻</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+        <li>
+          <div class="n-main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是新闻</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+        <li>
+          <div class="n-main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是新闻</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+        <li>
+          <div class="n-main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是新闻</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+        <li>
+          <div class="n-main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是新闻</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+        <li>
+          <div class="n-main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是新闻</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+        <li>
+          <div class="n-main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是新闻</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- 下拉加载方法 -->
+    <!-- <ul
+        v-infinite-scroll="loadMore"
+        infinite-scroll-disabled="loading"
+        infinite-scroll-distance="10">
+        <li v-for="item in list">{{ item }}</li>
+      </ul> -->
+  </div>
+</body>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    methods: {
+      handleClick: function () {
+        this.$toast('Hello world!')
+      },
+      loadMore() {
+        this.loading = true;
+        setTimeout(() => {
+          let last = this.list[this.list.length - 1];
+          for (let i = 1; i <= 10; i++) {
+            this.list.push(last + i);
+          }
+          this.loading = false;
+        }, 2500);
+      }
+    }
+  })
+</script>
+
+</html>

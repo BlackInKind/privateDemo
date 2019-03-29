@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      text-decoration: none;
+      font-style: normal;
+      color: rgb(35, 35, 36);
+      font: inherit;
+      vertical-align: baseline;
+    }
+
+    body {
+      background-color: rgb(192, 192, 192);
+    }
+
+    .fl {
+      float: left;
+    }
+    .fr {
+      float: right;
+    }
+    .swip {
+      /* height必须固定死 */
+      height: 200px;
+      margin: 40px 0px 10px;
+      background-color: rgb(189, 186, 186);
+    }
+
+    .swipe-style {
+      /* 轮播图设置 */
+      height: 200px;
+      width: 100%;
+    }
+
+    .con-point {
+      margin: 10px 0px;
+      padding: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background-color: aliceblue;
+    }
+
+    .con-point>div {
+      height: 100px;
+      width: 24%;
+      /* border:dashed 1px black; */
+    }
+
+    .con-point img {
+      display: block;
+      width: 80px;
+      height: 60%;
+      margin: 5px auto;
+      background-color: rgb(57, 120, 175);
+    }
+
+    .con-point em {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .green {
+      background-color: green;
+    }
+  </style>
+  <style>
+    .con-recommended {
+      padding: 10px;
+      background-color: aliceblue;
+
+    }
+
+    .con-recommended div h2 {
+      font-weight: 700;
+      padding: 5px 10px;
+      border-bottom: solid 1px black;
+    }
+
+    .main-recommended {
+      position: relative;
+      width: 100%;
+      padding: 10px 0px;
+      border-bottom: solid 1px black;
+    }
+
+    .l-content,
+    .r-content {
+      display: inline-block;
+    }
+
+    .l-content {
+      width: 30%;
+    }
+
+    .l-content img {
+      display: block;
+      height: 100px;
+      width: 100%;
+      background-color: black;
+    }
+
+    .r-content {
+      position: absolute;
+      height: 100px;
+      width: 60%;
+      margin-left: 10px;
+      padding: 0px 10px;
+      border-left: solid 1px black;
+    }
+
+    .r-content h3 {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .r-content p {
+      display: inline-block;
+      height: 45px;
+      width: 80%;
+      font-size: 0.8em;
+      text-indent: 1.6em;
+      overflow: hidden;
+      background-color: pink;
+    }
+
+    .r-content span {
+      margin-right: 20px;
+      font-size: 0.8em;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      background-color: pink;
+    }
+  </style>
+  <style>
+    .top-g-detail {
+      width: 100%;
+      height: 200px;
+      background-color: aliceblue;
+      margin: 40px 0px 10px;
+      position: relative;
+    }
+
+    .l-swipe {
+      position: absolute;
+      top: 0px;
+      left: 3%;
+      width: 50%;
+      height: 100%;
+    }
+
+    .top-g-detail .swip {
+      margin: 10px 0px;
+      height: 180px;
+      background-color: aliceblue;
+    }
+
+    .r-detail {
+      padding-left: 15px;
+      position: absolute;
+      top: 0px;
+      left: 56%;
+      width: 38%;
+      height: 100%;
+      /* background-color: rgb(197, 21, 51); */
+      border-left: dashed 1px black;
+    }
+
+    .r-detail h3 {
+      font-size: 1.1em;
+      font-weight: 700;
+      margin: 5% 0;
+    }
+
+    .r-detail>p {
+      font-size: 0.8em;
+      text-indent: 1.6em;
+      height: 27%;
+      overflow: hidden;
+      /* background-color: rgb(245, 237, 238); */
+    }
+
+    .r-detail div {
+      position: absolute;
+      top: 50%;
+      /* background-color: pink; */
+    }
+
+    .r-detail button {
+      font-weight: 700;
+      width: 50%;
+      height: 32px;
+      border-radius: 5%;
+      position: absolute;
+      top: 79%;
+      right: 20%;
+      background-color: rgb(145, 178, 248)
+    }
+
+    .goods-con {
+      width: 100%;
+      background-color: aliceblue;
+      margin-bottom: 10px;
+    }
+    .goods-nav {
+      border-bottom: solid 1px black;
+    }
+    .goods-con .goods-nav {
+      padding-top: 10px;
+      height: 40px;
+      text-align: center;
+      line-height: 35px;
+    }
+
+    .goods-nav em {
+      display: inline-block;
+      padding: 0px 15%;
+      margin: 0px 2px;
+      font-size: 0.8em;
+      /* background-color: pink; */
+    }
+
+    .on {
+      border-bottom: solid 2px red;
+    }
+    .goods-main {
+      width: 100%;
+      /* height: 100px; */
+      margin-bottom: 10px;
+      background-color: rgba(60, 7, 146, 0.342);
+    }
+    .goods-detail:last-child{
+      margin-bottom: 10px;
+    }
+    .goods-main .noshow{
+      height: 0px;
+      overflow: hidden;
+    }
+
+    .goods-zs-one {
+      width: 100%;
+      border-bottom: solid 1px rgba(0, 0, 0, 0.274);
+    }
+
+    .goods-zs-one img {
+      display: inline-block;
+      height: 200px;
+      width: 60%;
+      background-color: pink;
+    }
+
+    .goods-zs-one div {
+      margin-top: 5%;
+      text-indent: 1.6em;
+      font-size: 0.8em;
+      width: 35%;
+      padding: 2.5%;
+      float: right;
+    }
+
+    .goods-zs-one h3 {
+      font-weight: 700;
+      font-size: 1.1em;
+      margin-bottom: 5%;
+    }
+
+    .goods-zs-two {
+      width: 100%;
+      border-bottom: solid 1px rgba(0, 0, 0, 0.274);
+      position: relative;
+    }
+
+    .goods-zs-two img {
+      display: inline-block;
+      height: 200px;
+      width: 100%;
+      background-color: pink;
+    }
+
+    .goods-zs-two div {
+      text-indent: 1.6em;
+      font-size: 0.8em;
+      width: 35%;
+      padding: 2.5%;
+      position: absolute;
+      top: 40%;
+      z-index: 10;
+    }
+
+    .goods-zs-two h3 {
+      font-weight: 700;
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 5%;
+    }
+    .goods-eval {
+      width: 100%;
+      margin-bottom: 10px;
+      background-color: rgb(228, 161, 168);
+    }
+  </style>
+  <style>
+    .eval-data{
+      height:98px;
+      padding:5px 0px;
+      background-color:aliceblue;
+      border-bottom: solid 1px black;
+      position: relative;
+    }
+    .eval-data img {
+      display: block;
+      width: 25%;
+      height: 97px;
+      background-color:royalblue;
+    }
+    .r-eval-data {
+      width: 65%;
+      height:90px;
+      position:absolute;
+      top: 10%;
+      left: 28%;
+    }
+    .r-eval-data p {
+      font-size: 0.8em;
+      text-indent: 1.6em;
+    }
+    .eval-data span {
+      display: block;
+      font-size: 0.8em;
+      position: absolute;
+      right: 10%;
+      bottom:10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 我是头 -->
+    <mt-header fixed title="商品详情">
+      <!-- 控制返回 -->
+      <!-- <router-link to="/" slot="left">      </router-link> -->
+      <mt-button icon="back" slot="left">返回</mt-button>
+      <!-- 控制更多more -->
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
+    <!-- 商品详情轮播图 -->
+    <div class="top-g-detail">
+      <!-- 轮播图 -->
+      <div class="l-swipe">
+        <mt-swipe class="swip" :show-indicators="false" :auto="4000">
+          <mt-swipe-item>
+            <div class="red swipe-style"></div>
+          </mt-swipe-item>
+          <mt-swipe-item>
+            <div class="blue swipe-style"></div>
+          </mt-swipe-item>
+          <mt-swipe-item>
+            <div class="green swipe-style"></div>
+          </mt-swipe-item>
+        </mt-swipe>
+      </div>
+      <!-- 详情 -->
+      <div class="r-detail">
+        <h3>我是商品</h3>
+        <p>我是一对对对地的的信息我是一对对对地</p>
+        <div>
+          <p>库存: <i>XX</i></p>
+          <p>价格: <i>XX.xx</i></p>
+        </div>
+        <button>下单么？</button>
+      </div>
+    </div>
+    <!-- 详情、评论 -->
+    <div class="goods-con">
+      <div class="goods-nav">
+        <em class="on">图文介绍</em>
+        <em>评论评论</em>
+      </div>
+      <!-- r-eval控制切换那页 -->
+      <div class="goods-main">
+        <!-- 详情展示页noshow -->
+        <div class="goods-detail ">
+          <div class="goods-zs-one">
+            <img src="#" alt="图">
+            <div>
+              <h3>展示标题</h3>
+              <p>我是信息展示用的<br>我是信息展示专用位置</p>
+            </div>
+          </div>
+          <div class="goods-zs-two">
+            <img src="#" alt="图">
+            <div>
+              <h3>展示标题</h3>
+              <p>我是信息展示用的<br>我是信息展示专用位置</p>
+            </div>
+          </div>
+          <div class="goods-zs-one">
+            <img src="#" alt="图">
+            <div>
+              <h3>展示标题</h3>
+              <p>我是信息展示用的<br>我是信息展示专用位置</p>
+            </div>
+          </div>
+          <div class="goods-zs-two">
+            <img src="#" alt="图">
+            <div>
+              <h3>展示标题</h3>
+              <p>我是信息展示用的<br>我是信息展示专用位置</p>
+            </div>
+          </div>
+        </div>
+        <!-- 评论页 -->
+        <div class="goods-eval noshow">
+          <div class="eval-data">
+            <img src="javascrpit" alt="图">
+            <div class="r-eval-data">
+              <em>张某某:</em>
+              <p>我是评论的内容</p>
+            </div>
+            <span>2017-11-09</span>
+          </div>
+          <div class="eval-data">
+            <img src="javascrpit" alt="图">
+            <div class="r-eval-data">
+              <em>张某某:</em>
+              <p>我是评论的内容</p>
+            </div>
+            <span>2017-11-09</span>
+          </div>
+          <div class="eval-data">
+            <img src="javascrpit" alt="图">
+            <div class="r-eval-data">
+              <em>张某某:</em>
+              <p>我是评论的内容</p>
+            </div>
+            <span>2017-11-09</span>
+          </div>
+          <div class="eval-data">
+            <img src="javascrpit" alt="图">
+            <div class="r-eval-data">
+              <em>张某某:</em>
+              <p>我是评论的内容</p>
+            </div>
+            <span>2017-11-09</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 推荐懒加载 -->
+    <div class="con-recommended">
+      <!-- 推荐列表 -->
+      <div>
+        <h2>推荐列表</h2>
+      </div>
+      <ul>
+        <li>
+          <div class="main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是标题</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+        <li>
+          <div class="main-recommended">
+            <div class="l-content"><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div class="r-content"><a href="javascript:;">
+                <h3>我是标题</h3>
+                <p>我是内容</p><span>2017-16-20</span>
+              </a></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    methods: {
+      handleClick: function () {
+        this.$toast('Hello world!')
+      },
+      loadMore() {
+        this.loading = true;
+        setTimeout(() => {
+          let last = this.list[this.list.length - 1];
+          for (let i = 1; i <= 10; i++) {
+            this.list.push(last + i);
+          }
+          this.loading = false;
+        }, 2500);
+      }
+    }
+  })
+</script>
+
+</html>

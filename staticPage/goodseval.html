@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+      text-decoration: none;
+      font-style: normal;
+      color: rgb(35, 35, 36);
+      font: inherit;
+      vertical-align: baseline;
+    }
+    body{
+      background-color: rgb(192, 192, 192);
+    }
+    li {
+      display: inline-block;
+      list-style-type: none;
+    }
+    .fl {
+      float: left;
+    }
+    .fr {
+      float: right;
+    }
+    .swip {
+      /* height必须固定死 */
+      height: 200px;
+      margin:40px 0px 10px;
+      background-color: rgb(189, 186, 186);
+    }
+    .swipe-style {
+      /* 轮播图设置 */
+      height:200px;
+      width:100%;
+    }
+    .con-point {
+      margin: 10px 0px;
+      padding: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background-color: aliceblue;
+    }
+    .con-point > div {
+      height: 100px;
+      width: 24%;
+      /* border:dashed 1px black; */
+    }
+    .con-point img {
+      display: block;
+      width: 80px;
+      height: 60%;
+      margin:5px auto;
+      background-color: rgb(57, 120, 175);
+    }
+    .con-point em {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+    .red {
+      background-color: red;
+    }
+    .blue {
+      background-color: blue;
+    }
+    .green {
+      background-color:green;
+    }
+  </style>
+  <style>
+    .con-recommended {
+      padding: 10px;
+      background-color: aliceblue;
+
+    }
+    .con-recommended div h2 {
+      font-weight: 700;
+      padding:5px 10px;
+      border-bottom: solid 1px black;
+    }
+    .main-recommended {
+      position: relative;
+      width: 100%;
+      padding: 10px 0px;
+      border-bottom: solid 1px black;
+    }
+    .l-content, .r-content {display: inline-block;}
+    .l-content { width: 30%;}
+    .l-content img {
+      display: block;
+      height: 100px;
+      width:100%;
+      background-color: black;
+    }
+    .r-content {
+      position: absolute;
+      height: 100px;
+      width: 60%;
+      margin-left: 10px;
+      padding: 0px 10px;
+      border-left: solid 1px black;
+    }
+    .r-content h3 {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .r-content p {
+      display: inline-block;
+      height: 45px;
+      width: 80%;
+      font-size: 0.8em;
+      text-indent: 1.6em;
+      overflow: hidden;
+      background-color: pink;
+    }
+    .r-content span {
+      margin-right: 20px;
+      font-size: 0.8em;
+      position: absolute;
+      bottom: 0px;
+      right:0px;
+      background-color: pink;
+    }
+
+  </style>
+  <style>
+  .g-eval-point {
+    background-color: aliceblue;
+
+   }
+   .g-eval-point li {
+    padding: 0px 5px;
+   }
+   .g-eval-point div:first-child {
+    height: 30px;
+   }
+   .g-eval-point div:last-child {
+    padding: 10px;
+    border-bottom: solid 1px black;
+    border-top: solid 1px black;
+   }
+   .g-eval-point .nar-action {
+     padding:3px;
+     background-color: rgb(54, 124, 230);
+     border-radius: 6px;
+   }
+   
+  .geval-recommended {
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: pink;
+    border-top:solid 1px black;
+  }
+  .goods-list {
+    height: 150px;
+    width:50%;
+    background-color: aliceblue;
+  }
+  .goods-list div{
+    width:160px;
+    margin: 0px auto;
+  }
+  .goods-list div:nth-child(1) {
+    margin-top:5px;
+    background-color: rgb(41, 28, 226);
+    height: 120px;
+  }
+  .goods-list h3 {
+    font-size: 0.9em;
+    float: left;
+  }
+  .goods-list span {
+    float: right;
+  }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <mt-header fixed title="商品列表">
+      <!-- 控制返回 -->
+      <!-- <router-link to="/" slot="left">      </router-link> -->
+        <mt-button icon="back" slot="left">返回</mt-button>
+      <!-- 控制更多more -->
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
+    <!-- 推荐 懒加载-->
+    <div style="height:40px;"></div>
+    <div class="con-recommended">
+          <!-- tabnar -->
+      <div class="g-eval-point">
+        <div class="nar-point">
+          <ul>
+            <li class="nar-action">品类1</li>
+            <li>品类2</li>
+            <li>品类3</li>
+            <li>品类4</li>
+            <li>品类5</li>
+          </ul>
+        </div>
+        <div class="isShow">
+          <ul>
+            <li>品-1</li>
+            <li>品-2</li>
+            <li>品-3</li>
+            <li>品-4</li>
+            <li>品-5</li>
+            <li>品-6</li>
+          </ul>
+        </div>
+       </div>
+      <!-- 推荐列表弹性布局 -->
+      <div class="geval-recommended">
+        <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+        <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+         <div class="goods-list">
+            <div><a href="javascript:;"><img src="#" alt=""></a></div>
+            <div><a href="javascript:;"><h3>我是商品</h3><span>价:XX</span></a></div>
+         </div>
+       </div>
+      </div>
+   </div>
+    <!-- 下拉加载方法 -->
+    <!-- <ul
+        v-infinite-scroll="loadMore"
+        infinite-scroll-disabled="loading"
+        infinite-scroll-distance="10">
+        <li v-for="item in list">{{ item }}</li>
+      </ul> -->
+  </div>
+</body>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    methods: {
+      handleClick: function () {
+        this.$toast('Hello world!')
+      },
+      loadMore() {
+        this.loading = true;
+        setTimeout(() => {
+          let last = this.list[this.list.length - 1];
+          for (let i = 1; i <= 10; i++) {
+            this.list.push(last + i);
+          }
+          this.loading = false;
+        }, 2500);
+      }
+    }
+  })
+</script>
+
+</html>

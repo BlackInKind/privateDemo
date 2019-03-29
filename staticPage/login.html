@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      text-decoration: none;
+      font-style: normal;
+      color: rgb(35, 35, 36);
+      font: inherit;
+      vertical-align: baseline;
+    }
+
+    body {
+      background-color: rgb(192, 192, 192);
+    }
+
+    .fl {
+      float: left;
+    }
+
+    .swip {
+      /* height必须固定死 */
+      height: 200px;
+      margin: 40px 0px 10px;
+      background-color: rgb(189, 186, 186);
+    }
+
+    .swipe-style {
+      /* 轮播图设置 */
+      height: 200px;
+      width: 100%;
+    }
+
+    .con-point {
+      margin: 10px 0px;
+      padding: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      background-color: aliceblue;
+    }
+
+    .con-point>div {
+      height: 100px;
+      width: 24%;
+      /* border:dashed 1px black; */
+    }
+
+    .con-point img {
+      display: block;
+      width: 80px;
+      height: 60%;
+      margin: 5px auto;
+      background-color: rgb(57, 120, 175);
+    }
+
+    .con-point em {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .con-recommended {
+      padding: 10px;
+      background-color: aliceblue;
+
+    }
+
+    .con-recommended div h2 {
+      font-weight: 700;
+      padding: 5px 10px;
+      border-bottom: solid 1px black;
+    }
+
+    .main-recommended {
+      position: relative;
+      width: 100%;
+      padding: 10px 0px;
+      border-bottom: solid 1px black;
+    }
+
+    .l-content,
+    .r-content {
+      display: inline-block;
+    }
+
+    .l-content {
+      width: 30%;
+    }
+
+    .l-content img {
+      display: block;
+      height: 100px;
+      width: 100%;
+      background-color: black;
+    }
+
+    .r-content {
+      position: absolute;
+      height: 100px;
+      width: 60%;
+      margin-left: 10px;
+      padding: 0px 10px;
+      border-left: solid 1px black;
+    }
+
+    .r-content h3 {
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .r-content p {
+      display: inline-block;
+      height: 45px;
+      width: 80%;
+      font-size: 0.8em;
+      text-indent: 1.6em;
+      overflow: hidden;
+      background-color: pink;
+    }
+
+    .r-content span {
+      margin-right: 20px;
+      font-size: 0.8em;
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      background-color: pink;
+    }
+  </style>
+  <style>
+    .main-reg {
+      padding: 10px 10px 100px;
+      margin-top: 40px;
+      background-color: aliceblue;
+    }
+    .main-reg>div {
+      width: 100%;
+      margin: 10px 0px;
+    }
+    .main-reg label {
+      display: inline-block;
+      width: 20%;
+      text-align: center;
+    }
+    .main-reg input{
+
+      width: 70%;
+    }
+    .main-reg input[type = "radio"] {
+      width: 20px;
+    }
+    .main-reg .reg-sub {
+      position: absolute;
+      top: 50%;
+      left: 15%;
+      height: 45px;
+      border-radius: 5px;
+      background-color: rgba(82, 113, 252, 0.849);
+    }
+    .main-reg .reg-sub-on {
+      background-color:rgb(111, 111, 233);
+    }
+  </style>
+  <style>
+  
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <mt-header fixed title="登录">
+      <!-- 控制返回 -->
+      <!-- <router-link to="/" ></router-link> -->
+      <mt-button icon="back" slot="left">返回</mt-button>
+      <!-- 控制更多more -->
+      <mt-button icon="more" slot="right"></mt-button>
+    </mt-header>
+    <!-- 登录表单 -->
+    <form class="main-reg" action="#" method="POST">
+      <div><label for="email">邮箱</label>
+        <input type="email" id="email" name="email" placeholder="请输入邮箱">
+      </div>
+      <div><label for="password">密码</label>
+        <input type="password" id="password" name="password" placeholder="请输入密码">
+      </div>
+      <hr>
+      <div  style="position:relative">
+        <input class="reg-sub" type="submit" value="登录">
+      </div>
+  </div>
+</body>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    methods: {
+      handleClick: function () {
+        this.$toast('Hello world!')
+      },
+    }
+  })
+</script>
+
+</html>
