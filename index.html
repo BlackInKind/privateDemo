@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+      .container {
+        text-align: center;
+        height: 500px;
+        width: 240px;
+        background-color: pink;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        margin-left: -120px;
+      }
+      .txbj {
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+      }
+      .stry {
+        width: 24px;
+        height: 40px;
+        background-color: black;
+        margin: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container">
+      <h1>抽奖测试页</h1>
+      <div class="txbj">
+          <div class="stry" num="1"></div>
+          <div class="stry" num="2"></div>
+          <div class="stry" num="3"></div>
+          <div class="stry" num="4"></div>
+          <div class="stry" num="5"></div>
+          <div class="stry" num="6"></div>
+          <div class="stry" num="7"></div>
+          <div class="stry" num="8"></div>
+          <div class="stry" num="9"></div>
+          <div class="stry" num="10"></div>
+          <div class="stry" num="11"></div>
+          <div class="stry" num="12"></div>
+          <div class="stry" num="13"></div>
+          <div class="stry" num="14"></div>
+          <div class="stry" num="15"></div>
+          <div class="stry" num="16"></div>
+          <div class="stry" num="17"></div>
+          <div class="stry" num="18"></div>
+          <div class="stry" num="19"></div>
+          <div class="stry" num="20"></div>
+          <div class="stry" num="21"></div>
+          <div class="stry" num="22"></div>
+          <div class="stry" num="23"></div>
+          <div class="stry" num="24"></div>
+          <div class="stry" num="25"></div>
+          <div class="stry" num="26"></div>
+          <div class="stry" num="27"></div>
+          <div class="stry" num="28"></div>
+          <div class="stry" num="29"></div>
+          <div class="stry" num="30"></div>
+          <div class="stry" num="31"></div>
+          <div class="stry" num="32"></div>
+          <div class="stry" num="33"></div>
+          <div class="stry" num="34"></div>
+          <div class="stry" num="35"></div>
+          <div class="stry" num="36"></div>
+          <div class="stry" num="37"></div>
+          <div class="stry" num="38"></div>
+          <div class="stry" num="39"></div>
+          <div class="stry" num="40"></div>
+          <div class="stry" num="41"></div>
+          <div class="stry" num="42"></div>
+          <div class="stry" num="43"></div>
+          <div class="stry" num="44"></div>
+          <div class="stry" num="45"></div>
+          <div class="stry" num="46"></div>
+          <div class="stry" num="47"></div>
+          <div class="stry" num="48"></div>
+      </div>
+    </div>
+    <script>
+      function randomNum (){
+        let rand = Math.floor(Math.random()*101)
+        if(rand === 1) {
+          alert("特等奖")// rand= "特等奖"
+        } else if(rand >= 2 & rand <7){
+          alert("一等奖")// rand= "一等奖"
+        } else if(rand >= 8 & rand <42){
+          alert("二等奖")// rand= "二等奖"
+        } else {
+          alert("三等奖")// rand= "三等奖"
+        }
+      }
+      $(document).ready(function(){
+          $(".stry").click(function(){
+            randomNum()
+          });
+      });
+    </script>
+    <!-- <script src="" async defer></script> -->
+  </body>
+</html>
+
