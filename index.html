@@ -16,7 +16,7 @@
         height: 500px;
         width: 240px;
         background-color: pink;
-        position: absolute;
+        position: relative;
         top: 10%;
         left: 50%;
         margin-left: -120px;
@@ -28,10 +28,29 @@
         padding: 20px;
       }
       .stry {
-        width: 24px;
-        height: 40px;
+        width: 48px;
+        height: 80px;
         background-color: black;
         margin: 3px;
+      }
+      .important {
+        background-color: antiquewhite;
+      }
+      .zjym {
+        text-align: center;
+        height: 500px;
+        width: 240px;
+        background-color: red;
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        display: none;
+      }
+      .zjym h3 {
+        margin-top: 200px;
+      }
+      strong {
+        font-size: 24px;
       }
     </style>
   </head>
@@ -54,60 +73,30 @@
           <div class="stry" num="10"></div>
           <div class="stry" num="11"></div>
           <div class="stry" num="12"></div>
-          <div class="stry" num="13"></div>
-          <div class="stry" num="14"></div>
-          <div class="stry" num="15"></div>
-          <div class="stry" num="16"></div>
-          <div class="stry" num="17"></div>
-          <div class="stry" num="18"></div>
-          <div class="stry" num="19"></div>
-          <div class="stry" num="20"></div>
-          <div class="stry" num="21"></div>
-          <div class="stry" num="22"></div>
-          <div class="stry" num="23"></div>
-          <div class="stry" num="24"></div>
-          <div class="stry" num="25"></div>
-          <div class="stry" num="26"></div>
-          <div class="stry" num="27"></div>
-          <div class="stry" num="28"></div>
-          <div class="stry" num="29"></div>
-          <div class="stry" num="30"></div>
-          <div class="stry" num="31"></div>
-          <div class="stry" num="32"></div>
-          <div class="stry" num="33"></div>
-          <div class="stry" num="34"></div>
-          <div class="stry" num="35"></div>
-          <div class="stry" num="36"></div>
-          <div class="stry" num="37"></div>
-          <div class="stry" num="38"></div>
-          <div class="stry" num="39"></div>
-          <div class="stry" num="40"></div>
-          <div class="stry" num="41"></div>
-          <div class="stry" num="42"></div>
-          <div class="stry" num="43"></div>
-          <div class="stry" num="44"></div>
-          <div class="stry" num="45"></div>
-          <div class="stry" num="46"></div>
-          <div class="stry" num="47"></div>
-          <div class="stry" num="48"></div>
+      </div>
+      <div class="zjym">
+        <h3>恭喜你中奖了</h3>
+        <strong></strong>
       </div>
     </div>
     <script>
-      function randomNum (){
-        let rand = Math.floor(Math.random()*101)
-        if(rand === 1) {
-          alert("特等奖")// rand= "特等奖"
-        } else if(rand >= 2 & rand <7){
-          alert("一等奖")// rand= "一等奖"
-        } else if(rand >= 8 & rand <42){
-          alert("二等奖")// rand= "二等奖"
-        } else {
-          alert("三等奖")// rand= "三等奖"
-        }
+      
+      let rand = Math.floor(Math.random()*101)
+      if(rand === 1) {
+        rand= "特等奖"
+      } else if(rand >= 2 & rand <7){
+        rand= "一等奖"
+      } else if(rand >= 8 & rand <42){
+        rand= "二等奖"
+      } else {
+        rand= "三等奖"
       }
+      $(".zjym strong").text(rand);
+
       $(document).ready(function(){
           $(".stry").click(function(){
-            randomNum()
+            $(this).addClass("important");
+            $(".zjym").fadeIn();
           });
       });
     </script>
